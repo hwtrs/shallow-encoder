@@ -1,6 +1,11 @@
 import sys
 import numpy
 
+def mse(num, acc, pred):
+    
+    pass
+
+
 def main():
     if len(sys.argv) < 2:
         print("Usage: python script.py <filename>")
