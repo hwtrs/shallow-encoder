@@ -1,4 +1,11 @@
+# Usage: python3 dejankinator.py {arg1: input-file name} {arg2: output-file name}
+# Example: python3 dejankinator.py latimes latimes_parsed.txt
+#   This properly converts the latimes compendium into the proper format to be
+#   used in the JASSJr search scripts
+
 import re
+import sys
+
 
 def extract_text_from_docs(doc):
     docs = re.findall(r"<DOC>.*?</DOC>", doc, re.DOTALL)
@@ -13,14 +20,15 @@ def extract_text_from_docs(doc):
 
     return "\n".join(formatted_docs)
 
-// Un-hardcode this later
-with open("latimes.xml", "r", encoding="utf-8") as file:
+with open(sys.argv[1], "r", encoding="utf-8") as file:
     document = file.read()
 
-output = extract_text_from_docs(document)
+#output = extract_text_from_docs(document)
+output = "hello"
 
-// Un-hardcode this later
-with open("smalltimes_output.xml", "w", encoding="utf-8") as file:
+
+with open(sys.argv[2], "w", encoding="utf-8") as file:
     file.write(output)
+
 
 print("Extraction complete")
